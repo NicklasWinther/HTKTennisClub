@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HTKTennisClub.GUI.UserControls;
+using HTKTennisClub.GUI.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,30 @@ namespace HTKTennisClub.GUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        public MemberViewModel memberViewModel { get; set; } = new MemberViewModel();
         public MainWindow()
         {
             InitializeComponent();
+            detailsUserControl.Content = new MemberUserControl(memberViewModel);
+        }
+
+
+        private void MemberTab_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (!(detailsUserControl.Content is MemberUserControl))
+            {
+                detailsUserControl.Content = new MemberUserControl(memberViewModel);
+
+            }
+        }
+
+        private void FieldTab_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (!(detailsUserControl.Content is FieldUserControl))
+            {
+                detailsUserControl.Content = new FieldUserControl();
+
+            }
         }
     }
 }

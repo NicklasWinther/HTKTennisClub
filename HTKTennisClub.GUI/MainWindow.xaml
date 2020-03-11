@@ -5,8 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HTKTennisClub.GUI"
         mc:Ignorable="d"
-        Title="Tennisklubben HTK" Height="450" Width="800">
-    <Grid>
-        
+        Title="Tennisklubben HTK"
+        Height="450"
+        Width="1300" WindowStartupLocation="CenterScreen"
+        FontFamily="Arial"
+        FontSize="16">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TabControl Padding="10"
+                    x:Name="HeaderTabControl"
+                    Grid.Row="0" Margin="10,10,10,0">
+            <TabItem Header="Medlemmer"
+                     x:Name="MemberTab"
+                     Padding="10"
+                     PreviewMouseLeftButtonDown="MemberTab_PreviewMouseLeftButtonDown"/>
+
+            <TabItem Header="Baner"
+                     x:Name="FieldTab"
+                     Padding="10"
+                     PreviewMouseLeftButtonDown="FieldTab_PreviewMouseLeftButtonDown"/>
+        </TabControl>
+
+
+
+        <UserControl Grid.Row="1"
+                     x:Name="detailsUserControl" Background="LightGray" />
     </Grid>
 </Window>

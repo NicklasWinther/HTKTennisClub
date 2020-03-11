@@ -55,6 +55,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UserControls\FieldUserControl.xaml.cs">
+      <DependentUpon>FieldUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MemberUserControl.xaml.cs">
+      <DependentUpon>MemberUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\MemberViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,6 +74,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControls\FieldUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\MemberUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -93,6 +108,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HTKTennisClub.DAL\HTKTennisClub.DAL.csproj">
+      <Project>{89C93489-5F04-4EA1-9F3B-F44E3AB7A0C3}</Project>
+      <Name>HTKTennisClub.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HTKTennisClub.Entities\HTKTennisClub.Entities.csproj">
+      <Project>{BEB1DC65-6527-4703-9EF4-12428DABFA52}</Project>
+      <Name>HTKTennisClub.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
