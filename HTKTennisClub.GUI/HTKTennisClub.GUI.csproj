@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="EditMemberWindow.xaml.cs">
+      <DependentUpon>EditMemberWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\FieldUserControl.xaml.cs">
       <DependentUpon>FieldUserControl.xaml</DependentUpon>
     </Compile>
@@ -62,6 +65,10 @@
       <DependentUpon>MemberUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MemberViewModel.cs" />
+    <Page Include="EditMemberWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

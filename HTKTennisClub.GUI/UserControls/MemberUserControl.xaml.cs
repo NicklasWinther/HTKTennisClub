@@ -1,4 +1,6 @@
-﻿using HTKTennisClub.GUI.ViewModels;
+﻿using HTKTennisClub.DAL;
+using HTKTennisClub.Entities;
+using HTKTennisClub.GUI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,5 +36,31 @@ namespace HTKTennisClub.GUI.UserControls
         {
             vm.CreateMember();
         }
+
+        private void MemberDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            vm.SelectedMember = MemberDataGrid.SelectedItem as Member;
+            EditButton.IsEnabled = true;
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            new EditMemberWindow(new Member(){
+                Id = vm.SelectedMember.Id,
+                Firstname = vm.SelectedMember.Firstname,
+                Lastname = vm.SelectedMember.Lastname,
+                Address = vm.SelectedMember.Address,
+                PhoneNumber = vm.SelectedMember.PhoneNumber,
+                BirthDate = vm.SelectedMember.BirthDate,
+                Email = vm.SelectedMember.Email,
+                Active = vm.SelectedMember.Active
+            }
+                ).ShowDialog();
+                
+            vm.Members = new MemberRepository().GetAllMembers();
+            EditButton.IsEnabled = false;
+        }
+
+        
     }
 }

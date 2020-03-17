@@ -14,8 +14,12 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
 
-        <DataGrid ItemsSource="{Binding Members}"
+        <DataGrid ItemsSource="{Binding Members}" x:Name="MemberDataGrid"
                   VerticalContentAlignment="Center"
                   CanUserAddRows="False"
                   IsReadOnly="True"
@@ -24,9 +28,9 @@
                   SelectionMode="Single"
                   BorderBrush="LightSlateGray"
                   Padding="0,0,20,0"
-                  Grid.RowSpan="10"
                   Background="WhiteSmoke"
-                  AutoGenerateColumns="False">
+                  AutoGenerateColumns="False"
+                  SelectionChanged="MemberDataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Fornavn"
                                     Binding="{Binding Firstname}" />
@@ -107,7 +111,7 @@
                     <Setter Property="HorizontalAlignment"
                             Value="Left" />
                 </Style>
-                       
+
             </Grid.Resources>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -120,7 +124,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="20" />
+                <RowDefinition Height="10" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Label Grid.Column="0"
@@ -173,5 +177,14 @@
 
         </Grid>
 
+        <Grid Grid.Row="1"
+              Height="50">
+            <Button x:Name="EditButton" Content="Redigér"
+                    IsEnabled="False"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Padding="20,10"
+                    Click="EditButton_Click" />
+        </Grid>
     </Grid>
 </UserControl>

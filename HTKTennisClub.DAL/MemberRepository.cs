@@ -13,7 +13,7 @@ namespace HTKTennisClub.DAL
         public List<Member> GetAllMembers()
         {
             string sql =
-                $"SELECT * FROM Members";
+                $"SELECT * FROM Members ORDER BY Active DESC";
             return HandleData(ExecuteQuery(sql));
         }
 
@@ -42,11 +42,20 @@ namespace HTKTennisClub.DAL
             return members;
         }
 
-        public int CreateMember(Member newMember)
+        public int CreateMember(Member member)
         {
             string sql =
                 $"INSERT INTO Members (Firstname, Lastname, Address, PhoneNumber, Email, BirthDate, Active) " +
-                $"VALUES ('{newMember.Firstname}', '{newMember.Lastname}', '{newMember.Address}', '{newMember.PhoneNumber}', '{newMember.Email}', '{newMember.BirthDate.ToString("yyyy-MM-dd")}', 1)";
+                $"VALUES ('{member.Firstname}', '{member.Lastname}', '{member.Address}', '{member.PhoneNumber}', '{member.Email}', '{member.BirthDate.ToString("yyyy-MM-dd")}', 1)";
+
+            return ExecuteNonQuery(sql);
+        }
+
+        public int UpdateMember(Member member)
+        {
+               string sql = $"UPDATE Members " +
+                      $"SET Firstname = '{member.Firstname}', Lastname = '{member.Lastname}', Address = '{member.Address}', Email = '{member.Email}', PhoneNumber = '{member.PhoneNumber}', Active = '{Convert.ToInt32(member.Active)}' " +
+                      $"WHERE Id = {member.Id}";
 
             return ExecuteNonQuery(sql);
         }

@@ -13,6 +13,7 @@ namespace HTKTennisClub.GUI.ViewModels
     {
         private List<Member> members = new List<Member>();
         private Member newMember = new Member();
+        private Member selectedMember;
 
         public Member NewMember
         {
@@ -33,7 +34,14 @@ namespace HTKTennisClub.GUI.ViewModels
             set
             {
                 members = value;
+                OnPropertyChanged(nameof(Members));
             }
+        }
+
+        public Member SelectedMember
+        {
+            get { return selectedMember; }
+            set { selectedMember = value; }
         }
 
         public void CreateMember()
